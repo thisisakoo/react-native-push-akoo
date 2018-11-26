@@ -51,7 +51,7 @@
 ````
        <meta-data
             android:name="com.huawei.hms.client.appid"
-        android:value="100499511">
+        android:value="xxxxxxxxxx">
 `````
 
 
