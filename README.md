@@ -37,14 +37,9 @@
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 		````
-        String brand = Build.BRAND.toLowerCase();
-        switch (brand) {
-            case "huawei":
-                RNPushAkooModule.registerPush(this);
-                break;
-            default:
-                break;
-        }
+        RNPushAkooModule.miAppconfig("appid","appkey");
+        RNPushAkooModule.registerPush(this);
+        
         `````            
     }
 5. androidmenifest.xml

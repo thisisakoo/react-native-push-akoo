@@ -1,67 +1,71 @@
-
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.dhqq">
+    package="com.dhqq">
+    <uses-permission android:name="android.permission.GET_TASKS"/>
     <!--HMS-SDK引导升级HMS功能，访问OTA服务器需要网络权限-->
     <uses-permission android:name="android.permission.INTERNET" />
     <!--HMS-SDK引导升级HMS功能，保存下载的升级包需要SD卡写权限-->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <!--检测网络状态-->
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <!--检测wifi状态-->
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <!--为了获取用户手机的IMEI，用来唯一的标识用户。-->
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <!--如果是安卓8.0，应用编译配置的targetSdkVersion>=26，请务必添加以下权限 -->
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+
+
     <application>
-    <activity
-        android:name="com.huawei.hms.activity.BridgeActivity"
-        android:configChanges="orientation|locale|screenSize|layoutDirection|fontScale"
-        android:excludeFromRecents="true"
-        android:exported="false"
-        android:hardwareAccelerated="true"
-        android:theme="@android:style/Theme.Translucent" >
-        <meta-data
-            android:name="hwc-theme"
-            android:value="androidhwext:style/Theme.Emui.Translucent" />
-    </activity>
-    <activity
-        android:name="com.huawei.updatesdk.service.otaupdate.AppUpdateActivity"
-        android:configChanges="orientation|screenSize"
-        android:exported="false"
-        android:theme="@style/upsdkDlDialog" >
+        <activity
+            android:name="com.huawei.hms.activity.BridgeActivity"
+            android:configChanges="orientation|locale|screenSize|layoutDirection|fontScale"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:hardwareAccelerated="true"
+            android:theme="@android:style/Theme.Translucent">
+            <meta-data
+                android:name="hwc-theme"
+                android:value="androidhwext:style/Theme.Emui.Translucent" />
+        </activity>
+        <activity
+            android:name="com.huawei.updatesdk.service.otaupdate.AppUpdateActivity"
+            android:configChanges="orientation|screenSize"
+            android:exported="false"
+            android:theme="@style/upsdkDlDialog">
 
-        <meta-data
-            android:name="hwc-theme"
-            android:value="androidhwext:style/Theme.Emui.Translucent.NoTitleBar" />
-    </activity>
+            <meta-data
+                android:name="hwc-theme"
+                android:value="androidhwext:style/Theme.Emui.Translucent.NoTitleBar" />
+        </activity>
 
-    <activity
-        android:name="com.huawei.updatesdk.support.pm.PackageInstallerActivity"
-        android:configChanges="orientation|keyboardHidden|screenSize"
-        android:exported="false"
-        android:theme="@style/upsdkDlDialog" >
-        <meta-data
-            android:name="hwc-theme"
-            android:value="androidhwext:style/Theme.Emui.Translucent" />
-    </activity>
-    <provider
-        android:name="com.huawei.hms.update.provider.UpdateProvider"
-    android:authorities="com.dhtab.hms.update.provider"
-    android:exported="false"
-    android:grantUriPermissions="true" >
+        <activity
+            android:name="com.huawei.updatesdk.support.pm.PackageInstallerActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="false"
+            android:theme="@style/upsdkDlDialog">
+            <meta-data
+                android:name="hwc-theme"
+                android:value="androidhwext:style/Theme.Emui.Translucent" />
+        </activity>
 
-</provider>
-    <provider
-        android:name="com.huawei.updatesdk.fileprovider.UpdateSdkFileProvider"
+        <provider
+            android:name="com.huawei.hms.update.provider.UpdateProvider"
+            android:authorities="com.dhtab.hms.update.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
 
-        android:authorities="com.dhtab.updateSdk.fileProvider"
-        android:exported="false"
-        android:grantUriPermissions="true">
-    </provider>
-    <service android:name="com.huawei.updatesdk.service.deamon.download.DownloadService"
-        android:exported="false"/>
+        </provider>
+        <provider
+            android:name="com.huawei.updatesdk.fileprovider.UpdateSdkFileProvider"
+
+            android:authorities="com.dhtab.updateSdk.fileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true"></provider>
+
+        <service
+            android:name="com.huawei.updatesdk.service.deamon.download.DownloadService"
+            android:exported="false" />
 
 
         <activity
@@ -70,16 +74,15 @@
             android:excludeFromRecents="true"
             android:exported="false"
             android:hardwareAccelerated="true"
-            android:theme="@android:style/Theme.Translucent" >
+            android:theme="@android:style/Theme.Translucent">
             <meta-data
                 android:name="hwc-theme"
                 android:value="androidhwext:style/Theme.Emui.Translucent" />
         </activity>
         <meta-data
             android:name="com.huawei.hms.version"
-            android:value="2.6.1">
-        </meta-data>
-        <receiver android:name="com.dhqq.huaweipush.HuaweiPushRevicer" >
+            android:value="2.6.1"></meta-data>
+        <receiver android:name="com.dhqq.huaweipush.HuaweiPushRevicer">
             <intent-filter>
                 <!-- 必须,用于接收TOKEN -->
                 <action android:name="com.huawei.android.push.intent.REGISTRATION" />
@@ -93,6 +96,42 @@
                 <action android:name="com.huawei.intent.action.PUSH" />
             </intent-filter>
         </receiver>
+        <!--xiaomi-->
+        <activity
+            android:name="com.dhqq.mipush.PermissionActivity"
+            android:label="" />
+
+        <service android:enabled="true" android:process=":pushservice" android:name="com.xiaomi.push.service.XMPushService"/>
+
+        <service android:name="com.xiaomi.push.service.XMJobService" android:enabled="true" android:exported="false" android:permission="android.permission.BIND_JOB_SERVICE" android:process=":pushservice" /> <!--注：此service必须在3.0.1版本以后（包括3.0.1版本）加入-->
+
+        <service android:enabled="true" android:exported="true" android:name="com.xiaomi.mipush.sdk.PushMessageHandler" />
+
+        <service android:enabled="true" android:name="com.xiaomi.mipush.sdk.MessageHandleService" />
+        <!--注：此service必须在2.2.5版本以后（包括2.2.5版本）加入-->
+        <receiver android:exported="true" android:name="com.xiaomi.push.service.receivers.NetworkStatusReceiver" >
+
+        <intent-filter>
+
+            <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+
+            <category android:name="android.intent.category.DEFAULT" />
+
+        </intent-filter>
+
+    </receiver>
+
+        <receiver android:exported="false" android:process=":pushservice" android:name="com.xiaomi.push.service.receivers.PingReceiver" >
+
+            <intent-filter>
+
+                <action android:name="com.xiaomi.push.PING_TIMER" />
+
+            </intent-filter>
+
+        </receiver>
+
+        <!--xiaomi-->
     </application>
 </manifest>
   

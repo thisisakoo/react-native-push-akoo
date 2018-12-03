@@ -20,6 +20,7 @@ import static com.dhqq.huaweipush.HuaweiPushRevicer.ACTION_GOTCLICK;
 import static com.dhqq.huaweipush.HuaweiPushRevicer.ACTION_TOKEN;
 import static com.dhqq.huaweipush.HuaweiPushRevicer.ACTION_UPDATEUI;
 
+
 /**
  * Created by wangheng on 2017/11/22.
  */
@@ -27,8 +28,6 @@ public class HuaweiPushManager implements MixPushManager, HuaweiPushRevicer.IPus
     public static final String TAG = "HuaweiPushManager";
 
 
-    private static String appId = "100499511";
-    private static String appSecret = "428dbe1daa988e72be59489034120000";
     public static final String NAME = "huaweipush";
     private  String token="";
 
